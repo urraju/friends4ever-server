@@ -3,6 +3,15 @@ const mongoose = require("mongoose");
 const router = require("./src/routes/api");
 const app = express();
 const port = 8000;
+const cors = require('cors');
+
+// Security Middleware Implement
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // database connection with mongoose
@@ -17,13 +26,12 @@ const connectDB = async () => {
   }
 };
 
-app.use('/', router)
+app.use("/", router);
 
-
-app.use("*",(req,res)=>{
-    res.status(404).json({status:"fail",data:"Not Found"})
-})
-// assign port 
+app.use("*", (req, res) => {
+  res.status(404).json({ status: "fail", data: "Not Found" });
+});
+// assign port
 app.listen(port, async () => {
   console.log(`App listening at port ${port}`);
   await connectDB();

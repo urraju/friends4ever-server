@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 
 const friendsSchema = mongoose.Schema({
+    id : {type : String },
     profileImg : {type : String,},
     Name : {type : String,require : true},
     age : {type : Number, require : true},
