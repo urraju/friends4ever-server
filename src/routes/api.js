@@ -3,7 +3,7 @@ const express =require('express');
 const { getFriends, getSingleFriends } = require('../controlers/friends');
 const { postUsers } = require('../controlers/user');
 const { getCategory } = require('../controlers/category');
-const { postStory, getCategoryStory } = require('../controlers/allStory');
+const { postStory, getCategoryStory, getSingleStory } = require('../controlers/allStory');
  
  
 
@@ -22,4 +22,6 @@ router.get('/category', getCategory)
 // story api 
 router.post('/stories', postStory)
 router.get('/stories/:categoryStory', getCategoryStory)
+router.get('/stories/:id', getSingleStory)
+
 module.exports = router
